@@ -41,5 +41,4 @@ Thumbs.db
 
 # Private Cert
 localhost.key
-localhost.conf
 localhost.crt

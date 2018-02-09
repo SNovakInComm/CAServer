@@ -14,7 +14,8 @@ namespace CAApi
             var response = new
             {
                 href = Url.Link(nameof(GetRoot), null), 
-                certs = new { href = Url.Link(nameof(CertificateController.GetCerts), null)}
+                //certificates = new { href = Url.Link(nameof(CertificateController.GetCerts), null)},
+                certificateID = new { href = Url.Link(nameof(CertificateController.GetCertById), null) }
             };
 
             return Ok(response);

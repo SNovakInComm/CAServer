@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAApi", "CAApi\CAApi.csproj", "{368F1834-8AE5-4D2F-94A5-99DB2867BBA9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{368F1834-8AE5-4D2F-94A5-99DB2867BBA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{368F1834-8AE5-4D2F-94A5-99DB2867BBA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{368F1834-8AE5-4D2F-94A5-99DB2867BBA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{368F1834-8AE5-4D2F-94A5-99DB2867BBA9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

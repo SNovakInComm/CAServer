@@ -38,3 +38,8 @@ Thumbs.db
 
 # dotCover
 *.dotCover
+
+# Private Cert
+localhost.key
+localhost.conf
+localhost.crt

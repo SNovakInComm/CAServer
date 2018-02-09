@@ -18,9 +18,20 @@ namespace CAApi
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly int? _httpsPort;
+
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+
+            if(env.IsDevelopment())
+            {
+                var lauchJsonConfig = new ConfigurationBuilder()
+                    .SetBasePath(env.ContentRootPath)
+                    .AddJsonFile($"Properties{System.IO.Path.DirectorySeparatorChar}launchSettings.json")
+                    .Build();
+                _httpsPort = lauchJsonConfig.GetValue <int> ("iissettings:iisexpress:sslport");
+            }
         }
 
         public IConfiguration Configuration { get; }
@@ -30,7 +41,11 @@ namespace CAApi
         {
             services.AddMvc( opt =>
             {
-                opt.Filters.Add((typeof(JsonExceptionFilter)));
+                opt.Filters.Add(typeof(JsonExceptionFilter));
+
+                opt.SslPort = _httpsPort;
+                opt.Filters.Add(typeof(RequireHttpsAttribute));
+
                 var jsonFormatter = opt.OutputFormatters.OfType<JsonOutputFormatter>().Single();
                 opt.OutputFormatters.Remove(jsonFormatter);
                 opt.OutputFormatters.Add(new IonOutputFormatter(jsonFormatter));

@@ -25,4 +25,9 @@
   <ItemGroup>
     <Compile Remove="Controllers\ValuesController.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\localhost.pfx">
+      <Link>localhost.pfx</Link>
+    </None>
+  </ItemGroup>
 </Project>

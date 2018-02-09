@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using CAApi.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.AspNetCore.Mvc;
+using CAApi.Filters;
 
 namespace CAApi
 {
@@ -29,6 +30,7 @@ namespace CAApi
         {
             services.AddMvc( opt =>
             {
+                opt.Filters.Add((typeof(JsonExceptionFilter)));
                 var jsonFormatter = opt.OutputFormatters.OfType<JsonOutputFormatter>().Single();
                 opt.OutputFormatters.Remove(jsonFormatter);
                 opt.OutputFormatters.Add(new IonOutputFormatter(jsonFormatter));

@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using CAApi.Controllers;
 
 namespace CAApi
 {
@@ -12,7 +13,8 @@ namespace CAApi
         {
             var response = new
             {
-                href = Url.Link(nameof(GetRoot), null)
+                href = Url.Link(nameof(GetRoot), null), 
+                certs = new { href = Url.Link(nameof(CertificateController.GetCerts), null)}
             };
 
             return Ok(response);

@@ -1,6 +1,9 @@
 # Autosave files
 *~
 
+# Documentation
+*.pptx
+
 # build
 [Oo]bj/
 [Bb]in/

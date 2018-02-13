@@ -4,6 +4,10 @@
 # Documentation
 *.pptx
 
+# vs code temp
+
+.vs
+
 # build
 [Oo]bj/
 [Bb]in/

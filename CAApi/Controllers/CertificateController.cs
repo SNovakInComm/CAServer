@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using CAApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using CAApi.Models;
 
 namespace CAApi.Controllers
 {
@@ -10,6 +10,37 @@ namespace CAApi.Controllers
     [ApiVersion("1.0")]
     public class CertificateController : Controller
     {
+        [HttpGet("Generate/{KeyPassword}",  Name = nameof(GenerateCert))]
+        public IActionResult GenerateCert(String KeyPassword, CancellationToken ct)
+        {
+            AuthorityController CA = new AuthorityController(); // Should this be a static object???
+
+            if(KeyPassword.Length < 4 || KeyPassword.Length > 1023)
+            {
+                ApiError invalidPasswordError = new ApiError()
+                {
+                    Message = "Invalid Key Passphrase",
+                    Detail = "Pass Phrase Must be 4 to 1023 characters in length"
+                };
+                return BadRequest();
+            }
+
+            CA.Password = KeyPassword;
+            KeyDescriptor kd = new KeyDescriptor();
+            kd.Length = 2048;
+            kd.Algorithm = "aes256";
+
+            CA.CreateKey(kd);
+
+            var result = new
+            {
+                ID = KeyPassword,
+                Key = CA.Key
+            };
+
+            return Ok(result);
+        }
+
         [HttpGet(Name = nameof(GetCerts))]
         public IActionResult GetCerts()
         {

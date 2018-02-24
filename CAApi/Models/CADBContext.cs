@@ -10,5 +10,7 @@ namespace CAApi.Models
 
         public DbSet<UserEntity> Users { get; set; }
 
+        public DbSet<BootEntity> Boot { get; set; }
+
     }
 }

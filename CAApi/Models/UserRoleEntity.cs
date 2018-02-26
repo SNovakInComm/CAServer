@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Identity;
 
-
 namespace CAApi.Models
 {
     public class UserRoleEntity : IdentityRole<Guid>

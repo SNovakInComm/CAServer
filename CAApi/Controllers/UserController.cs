@@ -2,8 +2,9 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using CAApi.Models;
 using Microsoft.EntityFrameworkCore;
+using CAApi.Models;
+using CAApi.Utilities;
 
 namespace CAApi.Controllers
 {
@@ -13,17 +14,29 @@ namespace CAApi.Controllers
     {
         private readonly CADBContext _context;
 
-        public UserController(CADBContext context) { _context = context; }
+        private Crypto cipher;
+
+        public UserController(CADBContext context)
+        {
+            _context = context;
+            cipher = new Crypto(_context);
+        }
 
         [HttpGet(Name = nameof(GetUser))]
         public IActionResult GetUser()
         {
+            if (!Crypto.Validated)
+                return Unauthorized();
+
             return Ok();
         }
 
         [HttpGet("{userID}", Name = nameof(GetUserByIdAsync))]
         public async Task<IActionResult> GetUserByIdAsync(Guid userID, CancellationToken ct)
         {
+            if (!Crypto.Validated)
+                return Unauthorized();
+
             var entity = await _context.Users.SingleOrDefaultAsync(r => r.Id == userID.ToString(), ct);
 
             if (entity == null)
@@ -37,6 +50,9 @@ namespace CAApi.Controllers
         [HttpGet("{firstName},{lastName}", Name = nameof(GetUserByNameAsync))]
         public async Task<IActionResult> GetUserByNameAsync(String firstName, String lastName, CancellationToken ct)
         {
+            if (!Crypto.Validated)
+                return Unauthorized();
+
             var entity = await _context.Users.SingleOrDefaultAsync(r => r.FirstName == firstName && r.LastName == lastName, ct);
 
             if (entity == null)
@@ -49,6 +65,9 @@ namespace CAApi.Controllers
         [HttpPut("{firstName},{lastName}", Name = nameof(CreateUserWithNameAsync))]
         public async Task<IActionResult> CreateUserWithNameAsync(String firstName, String lastName, CancellationToken ct)
         {
+            if (!Crypto.Validated)
+                return Unauthorized();
+
             var entity = await _context.Users.SingleOrDefaultAsync(r => r.FirstName == firstName && r.LastName == lastName, ct);
 
             if (entity != null)
@@ -79,6 +98,9 @@ namespace CAApi.Controllers
         [HttpDelete("{userID}", Name = nameof(DeleteUserWithIDAsync))]
         public async Task<IActionResult> DeleteUserWithIDAsync(Guid userID, CancellationToken ct )
         {
+            if (!Crypto.Validated)
+                return Unauthorized();
+
             var entity = await _context.Users.SingleOrDefaultAsync(r => r.Id == userID.ToString(), ct);
             if (entity == null)
                 return NotFound();

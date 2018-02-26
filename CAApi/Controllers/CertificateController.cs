@@ -26,9 +26,11 @@ namespace CAApi.Controllers
             }
 
             CA.Password = KeyPassword;
-            KeyDescriptor kd = new KeyDescriptor();
-            kd.Length = 2048;
-            kd.Algorithm = "aes256";
+            KeyDescriptor kd = new KeyDescriptor
+            {
+                Length = 2048,
+                Algorithm = "aes256"
+            };
 
             CA.CreateKey(kd);
 

@@ -1,16 +1,17 @@
 ﻿using System;
 using Microsoft.AspNetCore.Identity;
-
+using System.ComponentModel.DataAnnotations;
 
 namespace CAApi.Models
 {
     public class BootEntity
     {
-        public string Id { get; set; }
+        [Key]
+        public byte[] IV { get; set; }
 
-        public string FirstName { get; set; }
+        public byte[] MasterKey { get; set; }
 
-        public string LastName { get; set; }
+        public byte[] ValidationString { get; set; }
 
     }
 }

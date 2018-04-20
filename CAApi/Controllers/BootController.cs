@@ -10,7 +10,7 @@ namespace CAApi.Controllers
 {
 
     [ApiVersion("1.0")]
-    [Route("/Boot")]
+    [Route("/Api/Boot")]
     public class BootController : Controller
     {
         const string _validationString = "ThisIsATotallyValidString100";

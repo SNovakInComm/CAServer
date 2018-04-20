@@ -1,0 +1,28 @@
+﻿@page
+
+@model CAApi.Pages.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+@section Title
+{
+    <h2 class="title">Certificate Authority Server</h2>
+}
+
+<div class="info">
+@{
+    if (Model.Validated)
+    {
+        <a href="/Main">Main</a>
+    }
+    else
+    {
+        <a href="/Bootstap">Bootstrap</a>
+    }
+}
+
+</div>
+
+

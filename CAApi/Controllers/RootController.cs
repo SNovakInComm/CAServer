@@ -4,10 +4,11 @@ using CAApi.Controllers;
 
 namespace CAApi
 {
-    [Route("/")]
+    [Route("/Api")]
     [ApiVersion("1.0")]
     public class RootController : Controller
     {
+        /*
         [HttpGet(Name = nameof(GetRoot))]
         public IActionResult GetRoot()
         {
@@ -23,5 +24,6 @@ namespace CAApi
 
             return Ok(response);
         }
+        */
     }
 }

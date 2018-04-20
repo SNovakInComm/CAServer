@@ -8,7 +8,7 @@ using CAApi.Utilities;
 
 namespace CAApi.Controllers
 {
-    [Route("/[controller]")]
+    [Route("/Api/[controller]")]
     [ApiVersion("1.0")]
     public class UserController : Controller
     {

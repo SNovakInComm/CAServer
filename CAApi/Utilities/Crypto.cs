@@ -22,6 +22,11 @@ namespace CAApi.Utilities
 
         // -------------------------------------------------- Constructors
         #region Constructors
+        
+        public Crypto()
+        {
+
+        }
 
         public Crypto(CADBContext context)
         {

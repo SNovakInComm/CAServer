@@ -1,0 +1,11 @@
+﻿@page
+@model CAApi.Pages.BootstrapModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Bootstrap";
+}
+<h2>Bootstrap</h2>
+<form method="post">
+    <input asp-for="BootstrapToken" placeholder="Password"/>
+    <button>Edit</button>
+</form>

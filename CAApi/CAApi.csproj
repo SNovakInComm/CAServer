@@ -5,10 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Web\" />
+    <Folder Include="Filters\" />
+    <Folder Include="Filters\" />
     <Folder Include="wwwroot\" />
-    <Folder Include="Infrastructure\" />
-    <Folder Include="Filters\" />
-    <Folder Include="Filters\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -26,7 +26,9 @@ namespace CAApi
                     options.Listen(IPAddress.Loopback, 5000);
                     options.Listen(IPAddress.Loopback, 44321, listenOptions =>
                     {
-                        listenOptions.UseHttps($"..{System.IO.Path.DirectorySeparatorChar}localhost.pfx", "testpassword");
+                        var unused = $"..{System.IO.Path.DirectorySeparatorChar}localhost.pfx";
+                        Console.WriteLine(unused);
+                        listenOptions.UseHttps($"..{System.IO.Path.DirectorySeparatorChar}CAServer.pfx", "testpassword");
                     });
                 })
                 .Build();

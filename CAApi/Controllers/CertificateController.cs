@@ -6,7 +6,7 @@ using CAApi.Models;
 
 namespace CAApi.Controllers
 {
-    [Route("/[controller]")]
+    [Route("/Api/[controller]")]
     [ApiVersion("1.0")]
     public class CertificateController : Controller
     {
